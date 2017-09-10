@@ -13,6 +13,7 @@ import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { CategoryService } from './services/category.service';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './services/product.service';
+import { ShoppingCartService } from './services/shopping-cart.service';
 import { CustomFormsModule} from 'ng2-validation';
 import { DataTableModule} from 'angular-4-data-table'
 
@@ -28,6 +29,9 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
+
 
 
 
@@ -44,7 +48,9 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +64,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     RouterModule.forRoot([
       {path: '', component: ProductsComponent },
       {path: 'products', component: ProductsComponent},
-      {path: 'shopping-cart', component: ShoppingCartComponent},
+      {path: 'shopping-carts', component: ShoppingCartComponent},
       {path: 'login', component: LoginComponent},
       {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
       {path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuard]},
@@ -92,7 +98,8 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AdminAuthGuard,
     UserService,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })

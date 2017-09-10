@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AppUser} from './../models/app-user';
 
 import {AuthService} from './../services/auth.service';
+import { ShoppingCartService } from './../services/shopping-cart.service';
+import { ShoppingCart } from './../models/shoping-cart';
 
 @Component({
   selector: 'nav-bar',
@@ -11,11 +13,17 @@ import {AuthService} from './../services/auth.service';
 })
 export class NavBarComponent implements OnInit {
   appUser: AppUser;
-  constructor(private auth:AuthService) {
-    auth.appUser$.subscribe(appUser => this.appUser = appUser)
+  cart$: Observable<ShoppingCart>;
+
+  constructor(private auth: AuthService, private ShoppingCartService: ShoppingCartService) {
+
+
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.auth.appUser$.subscribe(appUser => this.appUser = appUser)
+    this.cart$ = await this.ShoppingCartService.getCart()
+
   }
 
   logout(){
