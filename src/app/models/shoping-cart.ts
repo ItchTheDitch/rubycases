@@ -5,6 +5,10 @@ export class ShoppingCart {
     
     constructor(public items: ShoppingCartItem[]) {}
 
+    get productIds() {
+        return Object.keys(this.items);
+    }
+
     get totalItemCount() {
        let count = 0;
         // tslint:disable-next-line:forin
