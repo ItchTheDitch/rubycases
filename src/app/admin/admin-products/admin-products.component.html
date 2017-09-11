@@ -28,7 +28,7 @@
         [resizable]="true"
     >
         <ng-template #dataTableCell let-item="item">
-         {{item.price | currency:'IDR':true }}
+         Rp {{item.price | number: '1.2' }}
         </ng-template>
     </data-table-column>
     <data-table-column
